@@ -5,18 +5,19 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
-    "@prisma/adapter-pg": "^6.4.1",
+    "@prisma/adapter-pg": "^6.5.0",
     "argon2": "^0.41.1",
     "date-fns": "^4.1.0",
-    "hono": "^4.7.4",
+    "hono": "^4.7.5",
     "jsonwebtoken": "^9.0.2",
     "jws": "^4.0.0",
-    "pg": "^8.13.3"
+    "pg": "^8.14.1"
   },
   "devDependencies": {
-    "@prisma/client": "^6.4.1",
-    "@types/bun": "latest",
+    "@prisma/client": "^6.5.0",
+    "@types/bun": "^1.2.8",
     "@types/jsonwebtoken": "^9.0.9",
-    "prisma": "^6.4.1"
-  }
+    "prisma": "^6.5.0"
+  },
+  "packageManager": "pnpm@9.15.4"
 }
