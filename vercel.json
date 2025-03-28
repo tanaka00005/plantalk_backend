@@ -4,5 +4,8 @@
     "env": {
       "PNPM_FLAGS": "--no-frozen-lockfile"
     }
+  },
+  "functions": {
+    "src/index.ts": { ≈ }
   }
 }
