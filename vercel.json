@@ -1,11 +1,10 @@
 {
   "build": {
-    "commands": ["pnpm install", "pnpm prisma generate"],
     "env": {
-      "PNPM_FLAGS": "--no-frozen-lockfile"
+      "PRISMA_CLI_QUERY_ENGINE_TYPE": "library"
     }
   },
-  "functions": {
-    "src/index.ts": { "runtime": "edge" }
+  "scripts": {
+    "build": "pnpm install && pnpm prisma generate"
   }
 }
