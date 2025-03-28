@@ -1,8 +1,8 @@
 {
-    "build": {
-      "env": {
-        "PNPM_FLAGS": "--no-frozen-lockfile"
-      }
+  "build": {
+    "commands": ["pnpm install", "pnpm prisma generate"],
+    "env": {
+      "PNPM_FLAGS": "--no-frozen-lockfile"
     }
   }
-  
+}
