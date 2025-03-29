@@ -11,6 +11,14 @@ interface PostProps {
   };
 }
 
+interface LogType {
+  id: string;
+  userId: string;
+  message: string;
+  sender: string;
+  recordedAt: Date;
+}
+
 const chatRouter = new Hono<{ Variables: PostProps }>();
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "");
 
@@ -26,7 +34,7 @@ chatRouter.post("/chat", checkJWT(), async (c) => {
     const chatHistoryAllData = await prisma.chatLog.findMany();
 
     //チャット履歴を取得
-    const chatHistory = chatHistoryAllData.map((log) => {
+    const chatHistory = chatHistoryAllData.map((log: LogType) => {
       return {
         role: log.sender,
         parts: [{ text: log.message }],
@@ -108,7 +116,6 @@ chatRouter.post("/chat", checkJWT(), async (c) => {
 
 chatRouter.get("/getChatHistory", checkJWT(), async (c) => {
   const userToken = c.get("user");
-
 
   //ユーザーを取得
   const user = await prisma.user.findUnique({

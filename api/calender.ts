@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Diary, PrismaClient } from "@prisma/client";
 import { Hono } from "hono";
 import checkJWT from "../middleware/checkJWT";
 
@@ -112,7 +112,9 @@ calenderRouter.get("/getCalendar", checkJWT(), async (c) => {
   });
 
   console.log("eventHistory", eventHistory);
-  eventHistory.map((event) => {
+  eventHistory.map((event:Diary) => {
+    console.log(event as Diary)
+
     console.log("event", event.recordedAt);
     console.log("event", typeof event.recordedAt);
 
