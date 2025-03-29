@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "bun run --hot api/index.ts",
     "postinstall": "prisma generate",
-    "start": "ts-node api/index.ts"
+    "start": "ts-node api/index.ts",
+    "build": "tsc prisma generate"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
