@@ -1,8 +1,9 @@
 {
   "name": "my-app",
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "postinstall": "prisma generate"
+    "dev": "pnpm run start",
+    "postinstall": "prisma generate",
+    "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
@@ -18,7 +19,9 @@
     "@prisma/client": "^6.5.0",
     "@types/bun": "^1.2.8",
     "@types/jsonwebtoken": "^9.0.9",
-    "prisma": "^6.5.0"
+    "prisma": "^6.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   },
   "packageManager": "pnpm@9.15.4"
 }

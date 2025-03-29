@@ -1,8 +1,9 @@
 {
-    "build": {
-      "env": {
-        "NPM_CONFIG_USERCONFIG": "./.npmrc"
-      }
+  "build": {
+    "env": {
+      "NPM_CONFIG_USERCONFIG": "./.npmrc"
     }
-  }
-  
+  },
+  "buildCommand": "pnpm install && pnpm run build",
+  "devCommand": "pnpm dev"
+}

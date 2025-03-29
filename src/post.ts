@@ -1,7 +1,6 @@
 import { Hono } from "hono";
 import checkJWT from "../middleware/checkJWT";
 import { PrismaClient } from "@prisma/client";
-import { use } from "hono/jsx";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { format } from "date-fns";
 
