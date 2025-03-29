@@ -1,9 +1,9 @@
 {
   "name": "my-app",
   "scripts": {
-    "dev": "bun run --hot api/index.ts",
+    "dev": "bun run --hot api/index.js",
     "postinstall": "prisma generate",
-    "start": "node api/index.ts",
+    "start": "node api/index.js",
     "build": "pnpm prisma generate"
   },
   "dependencies": {
