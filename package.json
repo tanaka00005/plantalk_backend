@@ -4,7 +4,7 @@
     "dev": "bun run --hot api/index.js",
     "postinstall": "prisma generate",
     "start": "node api/index.js",
-    "build": "tsc"
+    "build": "pnpm prisma generate"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
