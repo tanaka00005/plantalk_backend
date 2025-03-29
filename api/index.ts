@@ -5,11 +5,15 @@ import postRouter from './post'
 import chatRouter from './chat'
 import calenderRouter from './calender'
 import { cors } from 'hono/cors'
+import { handle } from 'hono/vercel'
+
+export const config = {
+  runtime: 'edge'
+}
+
 
 const app = new Hono();
 
-const PORT = process.env.PORT || 3003; // 環境変数からポートを取得（デフォルト3003）
-const API_URL = process.env.API_URL || "http://localhost:3003";
 
 app.use(
   cors({
@@ -19,17 +23,11 @@ app.use(
   })
 );
 
-
-app.get('/', (c) => {
-  return c.text(`Hello Hono! ${API_URL}`)
-})
-
-// //authというパスを書くことでauthでwebapiを構築することができる
-// //ファイル分け
+//ファイル分け
 app.route("/auth", authRouter);
 app.route("/post", postRouter);
 app.route("/chat", chatRouter);
 app.route("/calendar", calenderRouter);
 
-export default app
+export default handle(app)
 
