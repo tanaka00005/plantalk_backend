@@ -31,9 +31,5 @@ app.route("/post", postRouter);
 app.route("/chat", chatRouter);
 app.route("/calendar", calenderRouter);
 
-export default { 
-  port: 3003, 
-  fetch: app.fetch, 
-} 
-
+export default app
 
