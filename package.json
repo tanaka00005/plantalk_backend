@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "pnpm run start",
     "postinstall": "prisma generate",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node api/index.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",

@@ -1,8 +1,6 @@
 {
-  "build": {
-    "env": {
-      "NPM_CONFIG_USERCONFIG": "./.npmrc"
-    }
-  },
+  "routes": [
+    { "src": "/(.*)", "dest": "api/index.ts" }
+  ],
   "devCommand": "pnpm dev"
 }
