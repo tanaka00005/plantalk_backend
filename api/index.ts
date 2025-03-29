@@ -13,7 +13,7 @@ const app = new Hono();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5174",
     allowMethods: ["GET,POST,PUT,PATCH,DELETE,OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization","x-auth-token"]
   })
@@ -25,5 +25,5 @@ app.route("/post", postRouter);
 app.route("/chat", chatRouter);
 app.route("/calendar", calenderRouter);
 
-export default handle(app)
+export default app
 

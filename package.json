@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "scripts": {
-    "dev": "pnpm run start",
+    "dev": "bun run --hot api/index.ts",
     "postinstall": "prisma generate",
     "start": "ts-node api/index.ts"
   },
