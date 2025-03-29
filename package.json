@@ -3,8 +3,8 @@
   "scripts": {
     "dev": "bun run --hot api/index.ts",
     "postinstall": "prisma generate",
-    "start": "ts-node api/index.ts",
-    "build": "tsc && pnpm prisma generate"
+    "start": "node api/index.ts",
+    "build": "pnpm prisma generate"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
@@ -20,10 +20,7 @@
     "@prisma/client": "^6.5.0",
     "@types/bun": "^1.2.8",
     "@types/jsonwebtoken": "^9.0.9",
-    "@types/node": "^22.13.14",
-    "prisma": "^6.5.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "prisma": "^6.5.0"
   },
   "packageManager": "pnpm@9.15.4"
 }
