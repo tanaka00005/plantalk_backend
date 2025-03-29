@@ -1,7 +1,12 @@
 {
-  "functions": {
-    "api/index.ts": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "api/index.ts",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/api/index.ts" }
+  ],
+  "devCommand": "pnpm dev"
 }
