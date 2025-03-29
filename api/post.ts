@@ -20,7 +20,6 @@ const prisma = new PrismaClient();
 postRouter.get("/private", checkJWT(), async (c) => {
   try {
     const userToken = c.get("user");
-    console.log("userToken", userToken);
 
     const user = await prisma.user.findUnique({
       where: {
