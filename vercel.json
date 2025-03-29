@@ -1,4 +1,11 @@
 {
+  "builds": [{ "src": "index.ts", "use": "@vercel/bun" }],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.ts"
+    }
+  ],
   "build": {
     "env": {
       "PRISMA_CLI_QUERY_ENGINE_TYPE": "library"
