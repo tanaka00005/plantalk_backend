@@ -5,7 +5,7 @@ import postRouter from './post'
 import chatRouter from './chat'
 import calenderRouter from './calender'
 import { cors } from 'hono/cors'
-import { handle } from 'hono/vercel'
+
 
 
 const app = new Hono();
