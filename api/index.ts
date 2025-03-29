@@ -7,10 +7,6 @@ import calenderRouter from './calender'
 import { cors } from 'hono/cors'
 import { handle } from 'hono/vercel'
 
-export const config = {
-  runtime: 'edge'
-}
-
 
 const app = new Hono();
 
