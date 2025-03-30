@@ -537,6 +537,98 @@ app.get("/chat/getChatHistory", checkJWT(), async (c) => {
   });
 });
 
+app.get("/chat/getChatHistory", checkJWT(), async (c) => {
+  const userToken = c.get("user");
+
+
+  //ユーザーを取得
+  const user = await prisma.user.findUnique({
+    where: {
+      email: userToken.email,
+    },
+    include: {
+      plants: true,
+      diaries: true,
+      waterLogs: true,
+    },
+  });
+
+  if (!user) {
+    return c.json({ error: "ユーザーが見つかりません" }, 404);
+  }
+
+  const chatHistoryModel = await prisma.chatLog.findMany({
+    where: {
+      sender: "model",
+      userId: user.id,
+    },
+  });
+
+  const chatHistoryUser = await prisma.chatLog.findMany({
+    where: {
+      sender: "user",
+      userId: user.id,
+    },
+  });
+
+  //チャット履歴を取得
+  return c.json({
+    chatHistoryModel: chatHistoryModel,
+    chatHistoryUser: chatHistoryUser,
+  });
+});
+
+
+app.get("/water/getwaterlog", checkJWT(), async (c) => {
+  const userToken = c.get("user");
+
+  //ユーザーを取得
+  const user = await prisma.user.findUnique({
+    where: {
+      email: userToken.email,
+    },
+    include: {
+      plants: true,
+      diaries: true,
+      waterLogs: true,
+    },
+  });
+
+  const nowYear = 2025;
+  const month = 5;
+  const date = 4;
+  const water = 88;
+
+  const SaveData = new Date(nowYear, month - 1, date + 1);
+
+
+  if (!user) {
+    return c.json({ error: "ユーザーが見つかりません" }, 404);
+  }
+
+  console.log("allData?.plants[0].id", user?.plants[0].id);
+
+
+  await prisma.waterLog.create({
+    data: {
+      userId: user.id,
+      wateredAt:SaveData,
+      plantId:user?.plants[0].id
+    },
+  });
+
+
+
+  if (!user) {
+    return c.json({ error: "ユーザーが見つかりません" }, 404);
+  }
+return c.json({
+    water:water,
+    wateredAt:SaveData,
+  });
+
+});
+
 export default { 
   port: 3000, 
   fetch: app.fetch, 
