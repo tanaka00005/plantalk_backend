@@ -67,3 +67,4 @@ model ChatLog {
   recordedAt  DateTime @default(now()) // チャット記録日時
 }
 
+

@@ -249,7 +249,7 @@ app.get("/post/private", checkJWT(), async (c) => {
 
     const promptFlower = `
     あなたはゲームのキャラクターです。可愛く${todayFormat}の誕生花を教えてください。
-
+    80文字までで話して
 
     `;
 
@@ -402,6 +402,49 @@ app.get("/calendar/getCalendar", checkJWT(), async (c) => {
   return c.json({ eventHistory });
 });
 
+
+app.get("/chat/start", checkJWT(), async (c) => {
+  const userToken = c.get("user");
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+
+    //ユーザーを取得
+    const user = await prisma.user.findUnique({
+      where: {
+        email: userToken.email,
+      },
+      include: {
+        plants: true,
+        diaries: true,
+        waterLogs: true,
+      },
+    });
+
+    if (!user) {
+      return c.json({ error: "ユーザーが見つかりません" }, 404);
+    }
+
+
+    const prompt = `
+    あなたは植物を育成するゲームのキャラクターです。
+    「こんにちは！」というような挨拶と共にプレイヤーにこれから植物を一緒に育てるようになるよう、促してください。
+    なるべく短い文章で
+    `;
+
+    const responseFirst = await modelFlower.generateContent(promptFlower);
+
+    
+
+    console.log("responseFlower", responseFlower);
+    const responseTextFlower =
+      responseFlower.response?.candidates?.[0].content?.parts?.[0]?.text
+        ?.replace(/```json\n?/, "")
+        .replace(/\n?```/, "")
+        .trim();
+    console.log("responseTextFlower", responseTextFlower);
+
+
+})
 
 
 app.post("/chat/chat", checkJWT(), async (c) => {
@@ -628,6 +671,31 @@ return c.json({
   });
 
 });
+
+
+app.post("/end/post", checkJWT(), async (c) => {
+
+  const userToken = c.get("user");
+  const { plantId,event } = await c.req.json();
+
+    //ユーザーを取得
+    const user = await prisma.user.findUnique({
+      where: {
+        email: userToken.email,
+      },
+      include: {
+        plants: true,
+        diaries: true,
+        waterLogs: true,
+      },
+    });
+
+
+
+    
+
+
+})
 
 export default { 
   port: 3000, 
