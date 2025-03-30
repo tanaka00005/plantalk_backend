@@ -67,5 +67,5 @@ void loop() {
   webSocket.broadcastTXT(Soilmessage);
   webSocket.broadcastTXT(Blightmessage);
   webSocket.loop();
-  delay(1000);
+  delay(60000);
 }
