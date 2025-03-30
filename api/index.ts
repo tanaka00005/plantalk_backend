@@ -402,5 +402,6 @@ app.get("/calendar/getCalendar", checkJWT(), async (c) => {
   return c.json({ eventHistory });
 });
 
+
 export const GET = handle(app);
 export const POST = handle(app);
