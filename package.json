@@ -1,11 +1,12 @@
 {
   "name": "my-app",
   "scripts": {
-    "dev": "pnpm run start",
+    "dev": "bun run --hot api/index.ts",
     "postinstall": "prisma generate",
     "start": "ts-node api/index.ts",
     "deploy": "vercel"
   },
+
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
     "@prisma/adapter-pg": "^6.5.0",
@@ -25,6 +26,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@9.15.4",
   "type": "module"
 }
